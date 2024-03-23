@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/stencil-test.esm.js"></script>
+  <script nomodule src="/build/stencil-test.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <dropdown-test></dropdown-test>
+  </div>
+
+
+  <script>
+    const dropdownElement = document.querySelector('dropdown-test');
+    dropdownElement.options = ['foo', 'bar'];
+  </script>
+</body>
+
+</html>
+
+<style>
+  .container {
+    width: 400px;
+    margin: 50px auto;
+  }
+</style>
