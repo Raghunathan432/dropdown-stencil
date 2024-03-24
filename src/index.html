@@ -12,14 +12,21 @@
 </head>
 
 <body>
-  <div class="container">
-    <dropdown-test></dropdown-test>
-  </div>
+  <!-- <div class="container"> -->
+    <dropdown-test container-class="dropdownContainer"></dropdown-test>
+  <!-- </div> -->
 
 
   <script>
     const dropdownElement = document.querySelector('dropdown-test');
     dropdownElement.options = ['foo', 'bar'];
+    const containerStyles = `
+      .dropdownContainer {
+        width: 600px;
+        margin: 50px auto;
+      }
+    `;
+    dropdownElement.containerStyles = containerStyles;
   </script>
 </body>
 

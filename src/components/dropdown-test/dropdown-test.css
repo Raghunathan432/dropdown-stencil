@@ -14,9 +14,16 @@
     border: 1px solid #ccc;
 }
 
-.dropdown-trigger__open, .dropdown-trigger__closed {
-    width: 100%;
+.dropdown-trigger {
+    width: 100%; 
     height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dropdown-trigger__closed, .dropdown-trigger__open {
+    width: 100%;
 }
 
 .dropdown-trigger__closed {
@@ -26,6 +33,8 @@
     align-items: center;
     padding: 5px 10px;
 }
+
+
 
 .dropdown-trigger__icon span {
     vertical-align: middle;

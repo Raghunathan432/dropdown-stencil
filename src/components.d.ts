@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface DropdownTest {
+        "containerClass": string;
+        "containerStyles": string;
         "isOpen": boolean;
         "options": any[];
     }
@@ -24,6 +26,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface DropdownTest {
+        "containerClass"?: string;
+        "containerStyles"?: string;
         "isOpen"?: boolean;
         "options": any[];
     }

@@ -6,6 +6,8 @@ export class DropdownElement {
   
   @Prop() options!: any[];
   @Prop({ mutable: true, reflect: true }) isOpen: boolean;
+  @Prop() containerClass: string;
+  @Prop() containerStyles: string;
  
   @State() filteredOptions: any[];
   @State() searchQuery: string = '';
@@ -22,6 +24,7 @@ export class DropdownElement {
 
   componentWillLoad() {
     this.filteredOptions = this.options;
+    this.containerClass = this.containerClass ? this.containerClass : '';
   }
 
   componentDidUpdate() {
@@ -79,18 +82,16 @@ export class DropdownElement {
   }
 
   private defaultDropdownTrigger(): HTMLElement {
-    if (!this.isOpen) {
-      return this.closedDefaultDropdownTrigger();
-    } else {
-      return this.openDefaultDropdownTrigger();
-    }
+    const triggerContent = this.isOpen ? this.openDefaultDropdownTrigger() : this.closedDefaultDropdownTrigger();
+    return <div class = "dropdown-trigger">{triggerContent}</div>
   }
 
   private defaultDropdownOptionsContainer(): HTMLElement {
-    
     return (
       <div class="dropdown-options-container">
-        {this.filteredOptions.map(option => <div class="dropdown-option" onClick={() => this.optionChangeHandler(this, option)}>{option}</div>)}
+        {this.filteredOptions.map(option => (
+          <div class="dropdown-option" onClick={() => this.optionChangeHandler(this, option)}>{option}</div>)
+        )}
       </div>
     );
   }
@@ -99,10 +100,13 @@ export class DropdownElement {
     return (
       <Fragment>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-        <div class="dropdown-test">
+        <div class={`dropdown-test ${this.containerClass}`}>
           {this.defaultDropdownTrigger()}
           {this.isOpen && this.defaultDropdownOptionsContainer()}
         </div>
+        <style> 
+          {this.containerStyles ? this.containerStyles : null}
+        </style> 
       </Fragment>
     );
   }
